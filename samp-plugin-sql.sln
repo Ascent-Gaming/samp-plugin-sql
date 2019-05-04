@@ -1,23 +1,37 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "samp-plugin-sql", "samp-plugin-sql.vcxproj", "{465A3531-9C93-4B23-B904-82F23F189AF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release - MySQL|Win32 = Release - MySQL|Win32
+		Release - MySQL|x64 = Release - MySQL|x64
 		Release - PostgreSQL|Win32 = Release - PostgreSQL|Win32
+		Release - PostgreSQL|x64 = Release - PostgreSQL|x64
 		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{465A3531-9C93-4B23-B904-82F23F189AF1}.Release - MySQL|Win32.ActiveCfg = Release - MySQL only|Win32
 		{465A3531-9C93-4B23-B904-82F23F189AF1}.Release - MySQL|Win32.Build.0 = Release - MySQL only|Win32
+		{465A3531-9C93-4B23-B904-82F23F189AF1}.Release - MySQL|x64.ActiveCfg = Release - MySQL only|Win32
+		{465A3531-9C93-4B23-B904-82F23F189AF1}.Release - MySQL|x64.Build.0 = Release - MySQL only|Win32
 		{465A3531-9C93-4B23-B904-82F23F189AF1}.Release - PostgreSQL|Win32.ActiveCfg = Release - PostgreSQL only|Win32
 		{465A3531-9C93-4B23-B904-82F23F189AF1}.Release - PostgreSQL|Win32.Build.0 = Release - PostgreSQL only|Win32
+		{465A3531-9C93-4B23-B904-82F23F189AF1}.Release - PostgreSQL|x64.ActiveCfg = Release - PostgreSQL only|x64
+		{465A3531-9C93-4B23-B904-82F23F189AF1}.Release - PostgreSQL|x64.Build.0 = Release - PostgreSQL only|x64
 		{465A3531-9C93-4B23-B904-82F23F189AF1}.Release|Win32.ActiveCfg = Release|Win32
 		{465A3531-9C93-4B23-B904-82F23F189AF1}.Release|Win32.Build.0 = Release|Win32
+		{465A3531-9C93-4B23-B904-82F23F189AF1}.Release|x64.ActiveCfg = Release|x64
+		{465A3531-9C93-4B23-B904-82F23F189AF1}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F75EE952-B739-4885-A89D-CD3C087CB797}
 	EndGlobalSection
 EndGlobal
