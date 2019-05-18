@@ -50,7 +50,7 @@ OUTFILE = bin/sql.so
 ifneq ($(MYSQL),)
 	COMPILE_FLAGS += -DPLUGIN_SUPPORTS_MYSQL=1
 	ifneq ($(STATIC),)
-		LIBRARIES += -ldl ./lib/mysql/libmariadbclient.a
+		LIBRARIES += -ldl ./lib/mysql/libmariadb.a
 		OUTFILE := bin/mysql_static.so
 	else
 		LIBRARIES += ./lib/mysql/libmariadb.so
