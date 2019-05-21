@@ -81,6 +81,7 @@ endif
 all:
 	mkdir -p bin
 	$(GXX) $(COMPILE_FLAGS) src/sdk/*.cpp
+	$(GG) $(COMPILE_FLAGS) src/sdk/amx/*.c
 	$(GXX) $(COMPILE_FLAGS) src/sql/*.cpp
 	$(GXX) $(COMPILE_FLAGS) src/sql/mysql/*.cpp
 	$(GXX) $(COMPILE_FLAGS) src/sql/pgsql/*.cpp
