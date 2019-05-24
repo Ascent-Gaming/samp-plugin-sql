@@ -50,10 +50,10 @@ OUTFILE = bin/sql.so
 ifneq ($(MYSQL),)
 	COMPILE_FLAGS += -DPLUGIN_SUPPORTS_MYSQL=1
 	ifneq ($(STATIC),)
-		LIBRARIES += -ldl ./lib/mysql/libmysql.a
+		LIBRARIES += -ldl ./lib/mysql/libmariadb.a
 		OUTFILE := bin/mysql_static.so
 	else
-		LIBRARIES += ./lib/mysql/libmysql.so
+		LIBRARIES += ./lib/mysql/libmariadb.so
 		OUTFILE := bin/mysql.so
 	endif
 endif
@@ -81,6 +81,7 @@ endif
 all:
 	mkdir -p bin
 	$(GXX) $(COMPILE_FLAGS) src/sdk/*.cpp
+	$(GG) $(COMPILE_FLAGS) src/sdk/amx/*.c
 	$(GXX) $(COMPILE_FLAGS) src/sql/*.cpp
 	$(GXX) $(COMPILE_FLAGS) src/sql/mysql/*.cpp
 	$(GXX) $(COMPILE_FLAGS) src/sql/pgsql/*.cpp
