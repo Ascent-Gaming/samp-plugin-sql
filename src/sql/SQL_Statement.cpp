@@ -55,22 +55,22 @@ SQL_Statement::~SQL_Statement() {
 }
 
 int SQL_Statement::executeCallback() {
-	status = STATEMENT_STATUS_PROCESSED;
-	cell ret, amx_addr = -1;
+	this->status = STATEMENT_STATUS_PROCESSED;
+	cell ret = 1, amx_addr = -1;
 	int funcidx;
-	if (error == 0) {
-		if (!amx_FindPublic(amx, callback, &funcidx)) {
-			int a_idx = paramsArr.size(), c_idx = paramsC.size(), s_idx = paramsStr.size();
-			for (int i = strlen(format) - 1; i != -1; --i) {
-				if ((i > 0) && (format[i - 1] == '&')) {
-					amx_Push(amx, paramsC[--c_idx]);
+	if (this->error == 0) {
+		if (!amx_FindPublic(this->amx, this->callback, &funcidx)) {
+			int a_idx = this->paramsArr.size(), c_idx = this->paramsC.size(), s_idx = this->paramsStr.size();
+			for (int i = strlen(this->format) - 1; i != -1; --i) {
+				if ((i > 0) && (this->format[i - 1] == '&')) {
+					amx_Push(this->amx, this->paramsC[--c_idx]);
 					--i; // Skipping next specifier (&x).
 				} else {
 					cell tmp;
-					switch (format[i]) {
+					switch (this->format[i]) {
 						case 'a':
 						case 'A':
-							amx_PushArray(amx, &tmp, NULL, paramsArr[--a_idx].first, paramsArr[a_idx].second);
+							amx_PushArray(this->amx, &tmp, NULL, this->paramsArr[--a_idx].first, this->paramsArr[a_idx].second);
 							if (amx_addr == -1) {
 								amx_addr = tmp;
 							}
@@ -85,15 +85,15 @@ int SQL_Statement::executeCallback() {
 						case 'I':
 						case 'f':
 						case 'F':
-							amx_Push(amx, paramsC[--c_idx]);
+							amx_Push(this->amx, (cell)this->paramsC[--c_idx]);
 							break;
 						case 'r':
 						case 'R':
-							amx_Push(amx, id);
+							amx_Push(this->amx, this->id);
 							break;
 						case 's':
 						case 'S':
-							amx_PushString(amx, &tmp, NULL, paramsStr[--s_idx], 0, 0);
+							amx_PushString(this->amx, &tmp, NULL, this->paramsStr[--s_idx], 0, 0);
 							if (amx_addr == -1) {
 								amx_addr = tmp;
 							}
@@ -101,21 +101,22 @@ int SQL_Statement::executeCallback() {
 					}
 				}
 			}
-			amx_Exec(amx, &ret, funcidx);
+			amx_Exec(this->amx, &ret, funcidx);
 		}
 	} else {
-		if (!amx_FindPublic(amx, ERROR_CALLBACK, &funcidx)) {
-			cell tmp;
-			amx_PushString(amx, &amx_addr, NULL, callback, 0, 0);
-			amx_PushString(amx, &tmp, NULL, query, 0, 0);
-			amx_PushString(amx, &tmp, NULL, errorMsg, 0, 0);
-			amx_Push(amx, error);
-			amx_Push(amx, connectionId);
-			amx_Exec(amx, &ret, funcidx);
+		ret = 0;
+
+		if (!amx_FindPublic(this->amx, ERROR_CALLBACK, &funcidx)) {
+			amx_PushString(this->amx, &amx_addr, NULL, callback, 0, 0);
+			amx_PushString(this->amx, NULL, NULL, query, 0, 0);
+			amx_PushString(this->amx, NULL, NULL, errorMsg, 0, 0);
+			amx_Push(this->amx, error);
+			amx_Push(this->amx, connectionId);
+			amx_Exec(this->amx, &ret, funcidx);
 		}
 	}
 	if (amx_addr != -1) {
-		amx_Release(amx, amx_addr);
+		amx_Release(this->amx, amx_addr);
 	}
 	return ret;
 }

@@ -40,7 +40,7 @@ class SQL_Statement {
 		/**
 		 * SQL's statement unique ID.
 		 */
-		int id;
+		cell id;
 	
 		/**
 		 * The AMX machine owning this statement.
