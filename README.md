@@ -2,6 +2,8 @@ SA-MP Plugin - SQL
 ==================
 [![Build Status](https://travis-ci.org/udan11/samp-plugin-sql.svg?branch=master)](https://travis-ci.org/udan11/samp-plugin-sql)
 
+> This plugin should **not** be used as it is *heavily* outdated. Consider [BlueG's MySQL plugin](https://github.com/pBlueG/SA-MP-MySQL) instead.
+
 This plugin provides a set of natives used to communicate with MySQL and PostgreSQL servers within a SA-MP server. More information about natives implemented by this plugin can be found in `sql.inc` file.
 
 Downloads
